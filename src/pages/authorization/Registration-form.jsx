@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 function RegistrationForm(props) {
     return (
@@ -21,8 +22,24 @@ function RegistrationForm(props) {
                     <label>password</label>
                     <input type="password" name="password" onChange={props.onChangeHandler}></input>
                 </div>
+                <div>
+                    <label>Confirm password</label>
+                    <input type="password" name="confirmPassword" onChange={props.onChangeHandler}></input>
+                </div>
                 <button type="submit" onSubmit={props.onSubmitHandler}> Submit </button>
+                
+                <div>
+                    
+                   
+                </div>
+                
             </form>
+            <div>
+                <h3>Click here to Login</h3>
+            </div>
+            <button>
+                <NavLink to="/Login">Login</NavLink>
+             </button>
         </div>
     );
 }

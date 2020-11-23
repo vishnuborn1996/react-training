@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import RegistrationForm from "./Registration-form";
+import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 /*
 1. create a login page
@@ -9,10 +11,9 @@ import RegistrationForm from "./Registration-form";
 */
 
 function Registration() {
-    const initialState = { firstName: "", lastName: "", email: "", password: "" };
+    const initialState = { firstName: "", lastName: "", email: "", password: "" , confirmPassword: ""};
 
     const [registrationForm, setRegistrationForm] = useState(initialState);
-    const [hide, setHide] = useState(false);
 
     function onChangeHandler({ target }) {
         setRegistrationForm({ ...registrationForm, [target.name]: target.value })
@@ -33,6 +34,13 @@ function Registration() {
         if (registrationForm.password === "") {
             isFormValid = false;
         }
+        if (registrationForm.confirmPassword === "") {
+            isFormValid = false;
+        }
+        if ( registrationForm.Password !== registrationForm.confirmPassword){
+            isFormValid = false;
+
+        }
 
         if (isFormValid) {
             localStorage.setItem('user', JSON.stringify(registrationForm));
@@ -41,6 +49,7 @@ function Registration() {
             alert("Please enter the required fields !!");
         }
     }
+    
 
     return (
         <>
@@ -48,4 +57,5 @@ function Registration() {
         </>
     );
 }
+
 export default Registration;
