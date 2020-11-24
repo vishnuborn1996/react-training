@@ -13,13 +13,10 @@ function Login() {
     function onSubmitHandler() {
         let isFormValid = true;
 
-        if (loginForm.email === "") {
-            isFormValid = false;
-        }
         if (loginForm.usertName === "") {
             isFormValid = false;
         }
-        
+
         if (loginForm.password === "") {
             isFormValid = false;
         }
@@ -33,7 +30,7 @@ function Login() {
 
     return (
         <>
-            <loginForm onChangeHandler={onChangeHandler} onSubmitHandler={onSubmitHandler} />
+            <LoginForm onChangeHandler={onChangeHandler} onSubmitHandler={onSubmitHandler} />
         </>
     );
 }

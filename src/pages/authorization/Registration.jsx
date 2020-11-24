@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import RegistrationForm from "./Registration-form";
-import ReactDOM from 'react-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 /*
 1. create a login page
@@ -11,7 +10,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 */
 
 function Registration() {
-    const initialState = { firstName: "", lastName: "", email: "", password: "" , confirmPassword: ""};
+    const initialState = { firstName: "", lastName: "", email: "", password: "", confirmPassword: "" };
 
     const [registrationForm, setRegistrationForm] = useState(initialState);
 
@@ -19,7 +18,8 @@ function Registration() {
         setRegistrationForm({ ...registrationForm, [target.name]: target.value })
     }
 
-    function onSubmitHandler() {
+    function onSubmitHandler(event) {
+        event.preventDefault();
         let isFormValid = true;
 
         if (registrationForm.email === "") {
@@ -37,23 +37,29 @@ function Registration() {
         if (registrationForm.confirmPassword === "") {
             isFormValid = false;
         }
-        if ( registrationForm.Password !== registrationForm.confirmPassword){
+        if (registrationForm.password !== registrationForm.confirmPassword) {
             isFormValid = false;
-
         }
 
         if (isFormValid) {
             localStorage.setItem('user', JSON.stringify(registrationForm));
+            setRegistrationForm({ ...initialState, email: "", firstName: "", password: "", confirmPassword: "", lastName: "" });
             //here we should add the code to route to the login code 
         } else {
             alert("Please enter the required fields !!");
         }
     }
-    
+
 
     return (
         <>
             <RegistrationForm onChangeHandler={onChangeHandler} onSubmitHandler={onSubmitHandler} />
+            <div>
+                <h3>Click here to Login</h3>
+            </div>
+            <button>
+                <NavLink to="/Login">Login</NavLink>
+            </button>
         </>
     );
 }
