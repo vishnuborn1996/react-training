@@ -44,7 +44,7 @@ function Registration() {
 
         if (isFormValid) {
             localStorage.setItem('user', JSON.stringify(registrationForm));
-            setRegistrationForm({ ...initialState, email: "", firstName: "", password: "", confirmPassword: "", lastName: "" });
+            //setRegistrationForm({ ...initialState, email: "", firstName: "", password: "", confirmPassword: "", lastName: "" });
             //here we should add the code to route to the login code
             History.push('/login');
         } else {

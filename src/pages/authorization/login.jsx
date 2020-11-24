@@ -15,7 +15,7 @@ function Login() {
         event.preventDefault();
         let isFormValid = true;
 
-        if (loginForm.usertName === "") {
+        if (loginForm.userName === "") {
             isFormValid = false;
         }
 
@@ -24,20 +24,22 @@ function Login() {
         }
 
         if (isFormValid) {
-          let userJSON=  localStorage.getItem('user');
-         
-          let user= JSON.parse(userJSON);
-          debugger;
-         
-        if (loginForm.userName=== user.email && loginForm.password=== user.password){
-         
-            alert("Login successful");
-            History.push("/home");
+            let userJSON = localStorage.getItem('user');
+
+            let user = JSON.parse(userJSON);
+            debugger;
+
+            if (loginForm.userName === user.email && loginForm.password === user.password) {
+
+                alert("Login successful");
+                History.push("/home");
+            }
+            else {
+                alert("username or password incorrect !!");
+            }
+        } else {
+            alert('please entere required fields');
         }
-        else {
-            alert("username or password incorrect !!");
-        }
-    }
     }
 
     return (
