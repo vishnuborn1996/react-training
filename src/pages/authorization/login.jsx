@@ -2,15 +2,16 @@ import React, { useState } from 'react';
 import LoginForm from "./loginForm";
 
 function Login() {
-    const initialState = { userName: "", email: "", password: "" };
+    const initialState = { userName: "", password: "" };
 
     const [loginForm, setLoginForm] = useState(initialState);
 
     function onChangeHandler({ target }) {
-        setLoginForm({ ...setLoginForm, [target.name]: target.value })
+        setLoginForm({ ...loginForm, [target.name]: target.value })
     }
 
-    function onSubmitHandler() {
+    function onSubmitHandler(event) {
+        event.preventDefault();
         let isFormValid = true;
 
         if (loginForm.usertName === "") {
@@ -22,10 +23,19 @@ function Login() {
         }
 
         if (isFormValid) {
-            localStorage.setItem('user', JSON.stringify(loginForm));
-        } else {
-            alert("Please enter the required fields !!");
+          let userJSON=  localStorage.getItem('user');
+         
+          let user= JSON.parse(userJSON);
+          debugger;
+         
+        if (loginForm.userName=== user.email && loginForm.password=== user.password){
+         
+            alert("Login successful");
         }
+        else {
+            alert("username or password incorrect !!");
+        }
+    }
     }
 
     return (

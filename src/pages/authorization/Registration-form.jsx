@@ -7,7 +7,7 @@ function RegistrationForm(props) {
                 <h3>Register your Account</h3>
                 <div>
                     <label>First Name</label>
-                    <input type="text" name="firstName" value={props.registrationForm.firstName} onChange={props.onChangeHandler}></input>
+                    <input type="text" name="firstName" onChange={props.onChangeHandler}></input>
                 </div>
                 <div>
                     <label>last Name</label>
