@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import RegistrationForm from "./Registration-form";
 import { NavLink } from 'react-router-dom';
+import History from "../../settings/History";
 
 /*
 1. create a login page
@@ -44,7 +45,8 @@ function Registration() {
         if (isFormValid) {
             localStorage.setItem('user', JSON.stringify(registrationForm));
             setRegistrationForm({ ...initialState, email: "", firstName: "", password: "", confirmPassword: "", lastName: "" });
-            //here we should add the code to route to the login code 
+            //here we should add the code to route to the login code
+            History.push('/login');
         } else {
             alert("Please enter the required fields !!");
         }

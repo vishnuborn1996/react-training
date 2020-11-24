@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import History from '../../settings/History';
 import LoginForm from "./loginForm";
 
 function Login() {
@@ -31,6 +32,7 @@ function Login() {
         if (loginForm.userName=== user.email && loginForm.password=== user.password){
          
             alert("Login successful");
+            History.push("/home");
         }
         else {
             alert("username or password incorrect !!");
