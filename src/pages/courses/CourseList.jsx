@@ -1,5 +1,5 @@
 import React from "react";
-
+import Table from 'react-bootstrap/Table';
 
 /*
 **  create a table structure for displaying the course
@@ -40,27 +40,40 @@ function CourseList() {
     //     );
     // }
 
-    return (
+     const courseMap = (course, index) => {
+         return (
+                        
+            <tr>
+                <td>{index}</td>
+                <td>{course.courseName}</td>
+                <td><button>More</button></td>
+            </tr>
+         )
+    }
+    return(
         <div>
-            {
-                courses.map((course, index, arr) => {
-                    return (
-                        <div>
-                            <div>
-                                index : {index}
-                            </div>
-                            <div>
-                                course:  {course.courseName}
-                            </div>
-                            <div>
-                                author Name:  {course.authorName}
-                            </div>
-                        </div>
-                    );
-                })
-            }
+            <Table striped bordered hover>
+              <thead>
+                 <tr>
+                    <th>index</th>
+                    <th>Course Name</th>
+                    <th>more</th>
+                </tr>
+              </thead>
+              <tbody>
+              {courses.map(courseMap)}
+              </tbody>
+            </Table>
         </div>
     )
+        
+                
+            
+    
+    
+    
+    
 }
+
 
 export default CourseList;
