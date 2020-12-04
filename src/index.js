@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Router } from 'react-router-dom';
 import history from "./settings/History";
+import 'bootstrap/dist/css/bootstrap.min.css'; 
 
 ReactDOM.render(
   <Router history={history}>

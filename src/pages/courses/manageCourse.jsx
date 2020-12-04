@@ -7,10 +7,12 @@ function ManageCourse() {
 
     const [courseForm, setCourseForm] = useState(initialState);
 
+
     function onChangeHandler({ target }) {
 
         // this is spread operator
         setCourseForm({ ...courseForm, [target.name]: target.value });
+
     }
 
     function onSubmitHandler(event) {
@@ -34,29 +36,29 @@ function ManageCourse() {
 
             savedCourses.push(courseForm);
 
-            localStorage.setItem("courses", JSON.stringify(savedCourses));
+            localStorage.setItem("courses",JSON.stringify(savedCourses));
         }
     }
 
-    function test() {
+    // function test() {
 
-        let invisible = null;
+    //     let invisible = null;
 
-        if (invisible == null) {
-            alert("hello user something is wrong in your end!!! ");
-        }
+    //     if (invisible == null) {
+    //         alert("hello user something is wrong in your end!!! ");
+    //     }
 
-        alert(invisible);
+    //     alert(invisible);
 
         // let array = [1, 2];
 
         // let number = 5;
 
-    }
+    // }
 
     return (
         <>
-            <button onClick={test}>test</button>
+            {/* <button onClick={test}>test</button> */}
             <CourseForm onChangeHandler={onChangeHandler} onSubmitHandler={onSubmitHandler} />
         </>
     );

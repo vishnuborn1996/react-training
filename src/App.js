@@ -5,6 +5,8 @@ import { Route } from 'react-router-dom';
 import Home from "./pages/home/home";
 import ManageCourse from './pages/courses/manageCourse';
 import CourseList from "./pages/courses/CourseList";
+import ManageAuthors from './pages/authors/manageAuthors';
+
 function App() {
   return (
     <div>
@@ -13,6 +15,7 @@ function App() {
       <Route path="/Home" exact component={Home} />
       <Route path="/Course" exact component={ManageCourse} />
       <Route path="/Courses" exact component={CourseList} />
+      <Route path="/authors" exact component= {ManageAuthors}/>
     </div>
   );
 }
