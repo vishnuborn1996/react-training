@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import History from '../../settings/History';
+// import History from '../../settings/History';
 import CourseForm from "./CourseForm";
+
 
 function ManageCourse() {
     const initialState = { courseName: "", authorName: "", difficulty: "" };
@@ -39,6 +40,25 @@ function ManageCourse() {
             localStorage.setItem("courses",JSON.stringify(savedCourses));
         }
     }
+    function AuthorList(){
+        let authors = JSON.parse(localStorage.getItem("authors"));
+        if (!authors){
+            authors = [];
+        }
+         authors.map((author,index) => {
+                return (
+                    <option key={index}>
+                        {author.authorName}
+                       
+                    </option>
+                )
+         
+            })
+        
+    }
+
+
+    
 
     // function test() {
 
@@ -59,7 +79,7 @@ function ManageCourse() {
     return (
         <>
             {/* <button onClick={test}>test</button> */}
-            <CourseForm onChangeHandler={onChangeHandler} onSubmitHandler={onSubmitHandler} />
+            <CourseForm onChangeHandler={onChangeHandler} onSubmitHandler={onSubmitHandler} AuthorList={AuthorList}/>
         </>
     );
 }

@@ -1,4 +1,6 @@
 import React from 'react';
+import AuthorList from '../authors/authorList';
+
 
 function CourseForm(props) {
 
@@ -13,7 +15,9 @@ function CourseForm(props) {
                 </div>
                 <div>
                     <label>Author Name</label>
-                    <input type="text" name="authorName" onChange={props.onChangeHandler}></input>
+                    <select name="authorName" onChange={props.onChangeHandler}>
+                        {AuthorList}
+                    </select>
                 </div>
                 <div>
                     <label htmlFor="difficulty">Choose difficulty</label>

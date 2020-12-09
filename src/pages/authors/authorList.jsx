@@ -1,4 +1,5 @@
 // import React from "react";
+// import AuthorForm from "./AuthorForm";
 
 
 
@@ -7,27 +8,20 @@
 //     if (!authors){
 //         authors = [];
 //     }
-//     const AuthorMap= (index,author)=> {
+//     const AuthorMap= (author)=> {
 //         return(
-//             
-//         )
+//         <option>{author.authorName}</option>
+        
+//             )
 //     }
 
 //     return(
-//         <div>
-//              <Table striped bordered hover>
-//               <thead>
-//                  <tr>
-//                     <th>index</th>
-//                     <th>Course Name</th>
-//                     <th>more</th>
-//                 </tr>
-//               </thead>
-//               <tbody>
-//               {authors.map(AuthorMap)}
-//               </tbody>
-//             </Table>
-//         </div>
+//         <select>
+//              {authors.map(AuthorMap)}
+
+//         </select>
+           
+       
 //     )
     
 
