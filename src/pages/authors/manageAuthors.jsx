@@ -36,8 +36,6 @@ function ManageAuthors() {
 
     }
     
-
-
     return (
         <>
             <AuthorForm onChangeHandler={onChangeHandler} onSubmitHandler={onSubmitHandler} />

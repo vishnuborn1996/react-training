@@ -1,30 +1,49 @@
 import React from "react";
 import History from "../../settings/History";
-import articleForm from "./articleForm"
+import ArticleForm from "./articleForm";
 
 
-class ManageArticle extends React.Component{
-    constructor(){
+export default class ManageArticle extends React.Component {
+
+    authorlist = [];
+
+    constructor() {
         super();
-        this.state= { authorName: "", title: "", article: "" };
-    }
-    
-     onChangeHandler=({target})=>{
-         this.setState({[target.name]: target.value });
-     }
+        this.state = { articleForm: { authorName: "", title: "", article: "" } };
 
-     onSubmitHandler=(event)=> {
+    }
+
+    componentDidMount() {
+        let authors = JSON.parse(localStorage.getItem("authors"));
+        debugger;
+        this.authorlist = authors == null ? [] : authors;
+    }
+
+    componentDidUpdate(){
+
+    }
+
+    componentWillUnmount(){
+
+    }
+
+    
+    onChangeHandler = ({ target }) => {
+        this.setState({ articleForm: { [target.name]: target.value } });
+    }
+
+    onSubmitHandler = (event) => {
         event.preventDefault();
         let isFormValid = true;
 
-        if (articleForm.authorName === "") {
+        if (this.state.articleForm.authorName === "") {
             isFormValid = false;
         }
 
-        if (articleForm.title === "") {
+        if (this.state.articleForm.title === "") {
             isFormValid = false;
         }
-        if (articleForm.article === "") {
+        if (this.state.articleForm.article === "") {
             isFormValid = false;
         }
 
@@ -35,14 +54,21 @@ class ManageArticle extends React.Component{
                 savedArticle = [];
             }
 
-            savedArticle.push(articleForm);
+            savedArticle.push(this.state.articleForm);
 
-            localStorage.setItem("article",JSON.stringify(savedArticle));
+            localStorage.setItem("article", JSON.stringify(savedArticle));
         }
+    }
+
+    render() {
+        return (
+            <>
+                <ArticleForm authors={this.authorlist} onChangeHandler={this.onChangeHandler} onSubmitHandler={this.onSubmitHandler} />
+            </>
+        )
     }
 }
 
-export default ManageArticle;
 
 // class ManageArticle extends React.Component {
 

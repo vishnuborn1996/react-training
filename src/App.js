@@ -6,7 +6,7 @@ import Home from "./pages/home/home";
 import ManageCourse from './pages/courses/manageCourse';
 import CourseList from "./pages/courses/CourseList";
 import ManageAuthors from './pages/authors/manageAuthors';
-import ArticleForm from "./pages/articles/articleForm";
+import ManageArticle from "./pages/articles/manageArticle";
 
 
 function App() {
@@ -17,8 +17,8 @@ function App() {
       <Route path="/Home" exact component={Home} />
       <Route path="/Course" exact component={ManageCourse} />
       <Route path="/Courses" exact component={CourseList} />
-      <Route path="/Authors" exact component= {ManageAuthors}/>
-      <Route path="/Article" exact component={ArticleForm}/>
+      <Route path="/Authors" exact component={ManageAuthors} />
+      <Route path="/Article" exact component={ManageArticle} />
     </div>
   );
 }

@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import History from '../../settings/History';
 // import History from '../../settings/History';
 import CourseForm from "./CourseForm";
 
@@ -8,6 +9,24 @@ function ManageCourse() {
 
     const [courseForm, setCourseForm] = useState(initialState);
 
+    // const [count, setCount] = useState(0);
+
+    // useEffect(() => {
+    //     let intervalId = setInterval(() => {
+    //         console.log("count");
+    //         setCount((_count) => {
+    //             console.log(_count);
+    //             return _count + 1
+    //         });
+    //     }, 1000);
+
+
+    //     return () => {
+    //         clearInterval(intervalId);
+    //         console.log("unmounting...");
+    //     }
+
+    // }, []);
 
     function onChangeHandler({ target }) {
 
@@ -37,49 +56,32 @@ function ManageCourse() {
 
             savedCourses.push(courseForm);
 
-            localStorage.setItem("courses",JSON.stringify(savedCourses));
+            localStorage.setItem("courses", JSON.stringify(savedCourses));
         }
     }
-    function AuthorList(){
+
+    function AuthorList() {
         let authors = JSON.parse(localStorage.getItem("authors"));
-        if (!authors){
+        if (!authors) {
             authors = [];
         }
-         authors.map((author,index) => {
-                return (
-                    <option key={index}>
-                        {author.authorName}
-                       
-                    </option>
-                )
-         
-            })
-        
+        authors.map((author, index) => {
+            return (
+                <option key={index}>
+                    {author.authorName}
+
+                </option>
+            )
+
+        })
+
     }
-
-
-    
-
-    // function test() {
-
-    //     let invisible = null;
-
-    //     if (invisible == null) {
-    //         alert("hello user something is wrong in your end!!! ");
-    //     }
-
-    //     alert(invisible);
-
-        // let array = [1, 2];
-
-        // let number = 5;
-
-    // }
 
     return (
         <>
-            {/* <button onClick={test}>test</button> */}
-            <CourseForm onChangeHandler={onChangeHandler} onSubmitHandler={onSubmitHandler} AuthorList={AuthorList}/>
+            Count: {count}
+            <button onClick={() => { History.push("/") }}>asdasd</button>
+            <CourseForm onChangeHandler={onChangeHandler} onSubmitHandler={onSubmitHandler} AuthorList={AuthorList} />
         </>
     );
 }

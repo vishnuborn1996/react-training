@@ -16,7 +16,12 @@ function CourseForm(props) {
                 <div>
                     <label>Author Name</label>
                     <select name="authorName" onChange={props.onChangeHandler}>
-                        {AuthorList}
+                        {props.authors && this.props.authors.map((value, i) => {
+                            return (
+                                <option key={i} value={value.authorName}>
+                                    {value.authorName}
+                                </option>);
+                        })}
                     </select>
                 </div>
                 <div>
